@@ -12,7 +12,7 @@
       <p>
         <%= item.description %>
       </p>
-      <a class="favorite">favorite</a>
+      <a href="<%= item_favorites_path(item) %>" class="favorite">favorite</a>
     </div>
   <% end %>
 </div>

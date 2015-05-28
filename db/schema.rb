@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150528154517) do
+ActiveRecord::Schema.define(version: 20150528180024) do
+
+  create_table "favorites", force: true do |t|
+    t.integer "item_id"
+  end
 
   create_table "items", force: true do |t|
     t.string   "name"

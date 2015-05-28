@@ -4,7 +4,7 @@ class FavoritesController < ApplicationController
   end
 
   def create
-  item = Item.find_by(name: params[:data_value])
-  Favorites.create(item_id: item.id)
+    Item.find(params[:item_id]).favorites.create
+    render json: {success: true}
   end
 end
