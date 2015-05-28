@@ -18,6 +18,9 @@ group :development do
 end
 
 group :development, :test do
+  gem 'mailcatcher'
+  gem 'rspec-rails', '~> 3.0'
   gem 'capybara'
+  gem 'launchy'
   gem 'pry', :require => 'pry'
 end

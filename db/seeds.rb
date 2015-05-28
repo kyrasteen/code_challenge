@@ -20,6 +20,7 @@ class Seed
       item = Item.create!(
         name: Faker::Commerce.product_name,
         description: Faker::Lorem.paragraph,
+        price: Faker::Commerce.price.to_f,
         image_url: "http://robohash.org/#{i}.png?set=set2&bgset=bg1&size=200x200"
         )
       puts "Item #{i}: #{item.name} created!"

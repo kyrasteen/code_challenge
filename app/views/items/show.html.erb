@@ -6,5 +6,6 @@
     <p>
       <%= @item.description %>
     </p>
+    <%= button_to "Make order", orders_path(item_id: @item.id) %>
   </div>
 </div>
