@@ -13,8 +13,7 @@ describe "Favorite Items" do
     Item.create(name: "shoes", description: "nice", price: 3.00)
     visit items_path
     first(".favorite").click
-    visit favorites_path
+    visit item_favorites_path(item)
     expect(page).to have_content(item.name)
-
   end
 end

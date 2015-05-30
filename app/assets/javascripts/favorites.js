@@ -1,14 +1,31 @@
 $(document).ready(function(){
-  var $favorite = $(".favorite")
-  $favorite.on("click", function() {
-    var $item = $(this).parents(".item")
-    debugger;
-    $(this).text("remove from favorites")
-    $.ajax({
-      dataType: 'text',
-      type: "post",
-      url: "/favorites",
-      data: { data_value: $item.find("h5").text()}
-    })
-  })
+   $(".favorite").on("click", function() {
+     if($(this).text()==="favorite"){
+       addToFavs(this);
+     } else {
+       removeFromFavs(this);
+     }
+   })
 })
+
+ function addToFavs(selector) {
+   $(selector).text("remove from favorites");
+   var id = $(selector).attr("data-id")
+   $.ajax({
+     dataType: 'text',
+     type: "post",
+     url: "/favorites",
+     data: { item_id: id }
+   })
+ }
+
+ function removeFromFavs(selector) {
+   $(selector).text("favorite");
+   var id = $(selector).attr("data-id")
+   $.ajax({
+     dataType: 'text',
+     type: "delete",
+     url: "/favorites/" + id,
+     data: { item_id: id }
+   })
+ }
