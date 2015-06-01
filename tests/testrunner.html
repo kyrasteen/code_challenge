@@ -1,0 +1,32 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mocha Tests</title>
+  <link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
+</head>
+<body>
+  <div id="mocha"></div>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="../node_modules/sinon/lib/sinon.js"></script>
+  <script src="../node_modules/mocha/mocha.js"></script>
+  <script src="../node_modules/chai/chai.js"></script>
+  <script src="../app/assets/javascripts/favorites.js"></script>
+
+  <script>
+    mocha.setup('bdd')
+    mocha.reporter('html');
+  </script>
+
+  <!-- Tests -->
+  <script src="testing.js"></script>
+
+  <script>
+    // Only tests run in real browser, injected script run if options.run == true
+    if (navigator.userAgent.indexOf('PhantomJS') < 0) {
+      mocha.run();
+    }
+  </script>
+  <p class="favorite" id="1" data-id="1">favorite</p>
+  <p class="favorite" id="2" data-id="2">remove from favorites</p>
+</body>
+</html>

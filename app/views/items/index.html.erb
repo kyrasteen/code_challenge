@@ -1,23 +1,27 @@
-<div class="container">
-<div class="row">
-  <div class="col-sm-12">
-    <h1><%= @items.count %> Items</h1>
-  </div>
-</div>
-<div class="row"></div>
-<% @items.each do |item| %>
-  <div class="col-sm-3 item">
-    <h5><%= item.name %></h5>
-    <%= link_to(image_tag(item.image_url), item_path(item)) %>
-    <p>
-      <%= item.description %>
-    </p>
-    <% if item.is_favorited? %>
-      <p data-id="<%= item.id %>", class="favorite">remove from favorites</p>
-    <% else %>
-      <p data-id="<%= item.id %>", class="favorite">favorite</p>
+<% cache "all items view" do %>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1><%= @items.count %> items</h1>
+      </div>
+    </div>
+    <div class="row"></div>
+    <% @items.each do |item| %>
+      <% cache "each index item" do %>
+        <div class="col-sm-3 item">
+          <h5><%= item.name %></h5>
+          <%= link_to(image_tag(item.image_url), item_path(item)) %>
+          <p>
+            <%= item.description %>
+          </p>
+          <% if item.is_favorited? %>
+            <p id="<%= item.id %>" data-id="<%= item.id %>", class="favorite">remove from favorites</p>
+          <% else %>
+            <p id="<%= item.id %>" data-id="<%= item.id %>", class="favorite">favorite</p>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
   </div>
 <% end %>
-</div>
 

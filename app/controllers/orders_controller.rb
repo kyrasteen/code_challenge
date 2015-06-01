@@ -8,10 +8,10 @@ class OrdersController < ApplicationController
   end
 
   def create
-    item_id = params[:item_id]
-    price = Item.find(item_id).price
+    item = Item.find(params[:item_id].to_i)
+    price = item.cached_price
     order = Order.create(amount: price)
-    order.order_items.create(item_id: item_id.to_i)
+    order.order_items.create(item_id: item.id)
     if order.save
       redirect_to order_path(order)
       OrderMailer.send_order_notice(order).deliver

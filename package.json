@@ -1,0 +1,12 @@
+{
+  "name": "testing-js",
+  "version": "0.0.1",
+  "devDependencies": {
+    "chai": "^2.3.0",
+    "grunt": "latest",
+    "grunt-mocha": "^0.4.12",
+    "grunt-mocha-debug": "0.0.10",
+    "mocha": "^2.2.5",
+    "sinon": "^1.14.1"
+  }
+}
