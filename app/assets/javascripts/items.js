@@ -7,14 +7,6 @@ $(document).ready(function() {
 });
 var pageCount = 0;
 
-function isInView(el) {
-  var docViewTop = $(this).scrollTop();
-  var docViewBottom = docViewTop + $(this).height();
-  var elemTop = el.offset().top;
-  var elemBottom = elemTop + el.height();
-  return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
-}
-
 function paginateItems(){
    pageCount ++;
    $.getJSON("/items?current_page=" + pageCount)
@@ -31,6 +23,7 @@ function paginate(items) {
 }
 
 function renderItemMarkup(item){
-  return "<div class='col-sm-3 item'><h5>" + item.name + "</h5><a href=" + item.image_url + "</a></div>"
+  return "<div class='col-sm-3 item'><h5>" + item.name + '</h5><a href=/items/' + item.id + '><img src=' + item.image_url + '></img></a>'
+          + '<p>' + item.description + '</p></div>'
 }
 
